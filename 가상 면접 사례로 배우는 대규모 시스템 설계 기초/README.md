@@ -7,5 +7,5 @@ coverY: 0
 
 # 가상 면접 사례로 배우는 대규모 시스템 설계 기초
 
-<figure><img src=".gitbook/assets/image (1).png" alt="" width="250"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt="" width="250"><figcaption></figcaption></figure>
 

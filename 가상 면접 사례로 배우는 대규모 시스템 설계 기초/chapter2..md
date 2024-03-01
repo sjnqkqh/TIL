@@ -1,10 +1,14 @@
-# Chapter2. 개략적인 규모 추정
+---
+description: >-
+  개략적인 규모 추정은 보편적으로 통용되는 성능 수치상에서 사고 실험을 행하여 추정치를 계산하는 행위. 즉, 어떤 설계가 요구사항에 부합할
+  것인지 보기 위한 것이다.
+---
 
-* 개략적인 규모 추정은 보편적으로 통용되는 성능 수치상에서 사고 실험을 행하여 추정치를 계산하는 행위. 즉, 어떤 설계가 요구사항에 부합할 것인지 보기 위한 것이다.
+# Chapter2. 개략적인 규모 추정
 
 #### 모든 프로그래머가 알아야 하는 응답지연 값
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67.png" alt=""><figcaption></figcaption></figure>
 
