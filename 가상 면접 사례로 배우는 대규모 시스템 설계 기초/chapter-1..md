@@ -6,7 +6,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ## 데이터베이스
 
-<figure><img src=".gitbook/assets/Untitled (1) (1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled (1) (1) (1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
 
 * 대부분의 상황에 RDBMS는 좋은 선택지지만 아래와 같은 요구사항이 있을 경우엔 NoSql을 고려해볼 수도 있다.
   * 아주 낮은 응답 지연시간이 요구됨
@@ -24,7 +24,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### Load Balancer
 
-<figure><img src=".gitbook/assets/Untitled 1.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled 1 (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 * 클라이언트가 DNS를 통해 서버가 아닌 로드밸런서로 요청을 보내고, 로드밸런서가 각 서버로 리퀘스트를 할당해준다. 일종의 프록시 서버의 역할
 * 이를 통해 서버의 failover를 구현할 수 있다. 장애가 발생한 서버엔 리퀘스트를 전달하지 않음으로써 가용성이 향상된다. 또한 배포 전략을 롤링이나 블루/그린 등으로 선택하여 무중단 배포가 가능해진다.
@@ -33,20 +33,20 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### DB 다중화
 
-<figure><img src=".gitbook/assets/Untitled 2.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled 2 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 * 읽기 + 쓰기 전용인 Main Server와 읽기 전용인 Replica Server를 통해 DB의 가용성을 증가시킬 수 있다. 본 도서에선 Master, Slave Server라고 명시했지만 해당 용어는 더 이상 쓰지 않는 점을 인지하고 있자. → 단, Mysql 같은 RDBMS에서 하위 호환성을 위해 설정 정보 등에 master, slave라는 단어를 쓰기는 한다. 알아만두자
 * DB 다중화에 따라 쿼리의 병렬 처리가 가능해지고, 안정성이 증대된다. 또한 가용성도 증가하는 결과를 일으킨다.
 * replica 서버가 다운되면 다른 레플리카 서버가 읽기 작업을 분산하여 수행하며, 레플리카가 한 대였는데 이게 다운된 경우엔 메인 서버가 읽기 작업까지 수행한다.
 * 소스 서버가 다운되면 레플리카 서버 중 하나가 새로운 메인 서버로 추대된다. 이 때 동기화 되지 못한 데이터가 소실될 수 있기 때문에 Tranaction log, Relay log를 통한 복구가 필요 할 수 있다.
 
-<figure><img src=".gitbook/assets/Untitled 3.png" alt="" width="375"><figcaption><p>지금까지의 내용들이 포함된 아키텍쳐</p></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled 3 (1).png" alt="" width="375"><figcaption><p>지금까지의 내용들이 포함된 아키텍쳐</p></figcaption></figure>
 
 ***
 
 ## Cache
 
-<figure><img src=".gitbook/assets/Untitled 4.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled 4 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * 캐시 계층은 데이터를 잠시 보관하는 계층으로 DB보다 훨씬 빠르며 독립적으로 규모를 확장시킬 수 있다.
 * 요청에 따른 결과를 반환하기 위해 캐시를 먼저 탐색하고 유무로 따라 데이터베이스를 탐색하는 방식을 읽기 주도형 캐시 전략이라고 한다. 이외의 캐시 전략들은 여러 가지가 있다. \[_6번 자료 참조,_ [_Caching Starategies and How to Choose the Right One_](https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one)_]_
@@ -66,7 +66,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### CDN
 
-<figure><img src=".gitbook/assets/Untitled 5.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled 5 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/Untitled 6.png" alt="" width="375"><figcaption></figcaption></figure>
 
