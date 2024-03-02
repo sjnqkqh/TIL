@@ -6,7 +6,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ## 데이터베이스
 
-<figure><img src=".gitbook/assets/Untitled (1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
+<figure><img src=".gitbook/assets/Untitled (1) (1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
 
 * 대부분의 상황에 RDBMS는 좋은 선택지지만 아래와 같은 요구사항이 있을 경우엔 NoSql을 고려해볼 수도 있다.
   * 아주 낮은 응답 지연시간이 요구됨
