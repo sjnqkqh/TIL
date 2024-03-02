@@ -25,7 +25,7 @@ description: 본 장에서는 3장에서 다뤘던 방식대로 처리율 제한
 
     등 설계 범위 및 동작 방식을 확정한다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>면접관과 질의응답을 통해 도출된 요구사항</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>면접관과 질의응답을 통해 도출된 요구사항</p></figcaption></figure>
 
 ***
 
@@ -34,7 +34,7 @@ description: 본 장에서는 3장에서 다뤘던 방식대로 처리율 제한
 * 클라이언트와 서버 사이의 미들웨어에서 처리율을 제한한다.
 * 기준을 초과하는 요청에 대해선 429(Too many request) 코드를 반환한다.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>미들웨어로 동작하는 처리율 제한 장치 예시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>미들웨어로 동작하는 처리율 제한 장치 예시</p></figcaption></figure>
 
 * 이 때 중요한 것은 기존에 사용하던 스택에서 큰 비용이 들지 않고 유연한 시스템을 구축하는 것이다. 프로그래밍 언어, 캐시 서비스 등 기존에 사용하던 것들이 유용하므로 선제적인 확인이 필요하다.
 * 모든 것을 새로 구현한다면 상관없지만, 기존에 사용하던 게이트웨이 서비스가 있다면 얘기가 다르다. 게이트웨이의 규칙에 따라 처리율을 제한할 수 있는 방법이 있을지 찾아야한다.
@@ -50,6 +50,6 @@ description: 본 장에서는 3장에서 다뤘던 방식대로 처리율 제한
   * `X-Ratelimit-Limit`: 매 윈도마다 클라이언트가 전송할 수 있는 요청의 수
   * `X-Ratelimit-Retry-After`: 한도 제한에 걸리지 않으려면 몇 초 뒤에 요청을 다시 보내야 하는지 알림
 
-<figure><img src="../.gitbook/assets/image (2).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * 클라이언트 요청은 서버가 아닌 미들웨어를 먼저 거친다. 이 부분에서 Redis에 저장된 카운터를 확인하고, 증가시킨 뒤 그 결과에 따라 요청을 서버로 전달하거나 폐기 혹은 메시지 큐에 삽입하여 후행 처리되게 구성한다.

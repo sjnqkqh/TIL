@@ -8,9 +8,9 @@ description: >-
 
 #### 모든 프로그래머가 알아야 하는 응답지연 값
 
-<figure><img src=".gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67.png" alt=""><figcaption></figcaption></figure>
 
 * **결론적으로 다음과 같이 생각할 수 있다.**
   * 메모리는 빠르지만 디스크는 아직 느리다. (SSD라도)

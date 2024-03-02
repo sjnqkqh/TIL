@@ -16,7 +16,7 @@ description: 4장에서 다룬 처리율 제한 컴포넌트에 사용되는 대
 
 * 각 요청이 처리될 때마다 하나의 토큰을 사용한다. 요청이 도착하면 버킷에 충분한 토큰이 있는지 확인하고, 없다면 요청을 드랍한다.
 
-<figure><img src="../.gitbook/assets/Untitled 1.png" alt="" width="334"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled 1.png" alt="" width="334"><figcaption></figcaption></figure>
 
 * 해당 토큰 버킷 알고리즘은 `버킷 크기, 토큰 공급률` 총 2개의 인자를 전달받는다.
 * 버킷의 갯수는 공급 제한 규칙에 따라 달라지지만, 통상적으로 End Point별로 각각의 버킷을 둔다. IP주소별로 처리율을 제한해야 한다면 IP 주소마다 버킷을 할당해야 할 것이다.
@@ -26,7 +26,7 @@ description: 4장에서 다룬 처리율 제한 컴포넌트에 사용되는 대
 
 #### 누출 버킷 알고리즘
 
-<figure><img src="../.gitbook/assets/Untitled 2.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled 2.png" alt="" width="563"><figcaption></figcaption></figure>
 
 * 토큰 버킷 알고리즘과 유사하지만 요청 처리율이 고정되어 있다는 점이 다르다. FIFO로 구현되며 고정된 속도로 요청을 처리한다.
 * 큐의 크기가 제한되어 있어 메모리 효율성이 높고, 안정적인 장점이 있지만 단시간에 트래픽이 몰리는 경우 큐에 오래된 요청들이 쌓이고 최신 요청은 드랍된다.
@@ -35,7 +35,7 @@ description: 4장에서 다룬 처리율 제한 컴포넌트에 사용되는 대
 
 #### 고정 윈도우 카운터 알고리즘
 
-<figure><img src="../.gitbook/assets/Untitled 3.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled 3.png" alt="" width="563"><figcaption></figcaption></figure>
 
 * 타임라인을 고정된 간격으로 나누고 각 윈도우마다 카운터를 붙여서 처리한다. 요청에 따라 1씩 카운터가 증가하고, 카운터 값이 임계치에 도달하면 새 요청은 타임라인이 지나기까지 드랍된다.
 * 다만 타임라인 임계 시간대에 요청이 집중되면 실제로 예상한 1분동안 임계치보다 많은 요청을 처리하게 된다. 그림 4-9에선 **2:00:30**부터 **2:01:30**까지 **10**개의 요청을 처리하는 상황을 설명한다. 이 경우 예정된 임계치(5)보다 더 많은 요청을 처리하게 된다.
@@ -44,7 +44,7 @@ description: 4장에서 다룬 처리율 제한 컴포넌트에 사용되는 대
 
 #### 슬라이딩 윈도우 로깅 알고리즘
 
-<figure><img src="../.gitbook/assets/Untitled 4.png" alt="" width="366"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled 4.png" alt="" width="366"><figcaption></figcaption></figure>
 
 * 고정 윈도우 카운터 알고리즘의 문제인 경계 시간대에 집중된 트래픽 문제를 해결하기 위한 알고리즘이다.
 * 이 알고리즘은 요청의 타임스탬프를 추적하여 윈도우 시작 시간보다 먼저 입력된 요청은 지워나가면서 요청을 처리한다. 또한 요청 횟수 즉, 로그의 크기가 허용치보다 작을 때만 서버로 요청을 전달한다.
@@ -54,7 +54,7 @@ description: 4장에서 다룬 처리율 제한 컴포넌트에 사용되는 대
 
 #### 슬라이딩 윈도우 카운터 알고리즘
 
-<figure><img src="../.gitbook/assets/Untitled 5.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Untitled 5.png" alt="" width="375"><figcaption></figcaption></figure>
 
 *   고정 윈도우 카운터 방식과 슬라이딩 윈도우 로그 방식의 결합 형태. 고정된 타임라인에서 윈도우 단위로 카운팅을 하지만, 진행 시간에 따라 비율을 계산하여 사용가능한 카운터를 산출한다. ⇒ 사용된 카운터 계산법: 지난 타임라인의 요청 수 + 이번 타임라인에서 들어온 요청 수 \* 지난 타임라인의 남은 시간 (슬라이딩 윈도우 비중)
 
