@@ -6,3 +6,4 @@
   * [Chapter3. 시스템 설계 면접 공략법](undefined/chapter3..md)
   * [Chapter4. 처리율 제한 장치의 설계](undefined/chapter4./README.md)
     * [Chapter 4-1. 대표적인 처리율 관련 알고리즘](undefined/chapter4./chapter-4-1..md)
+  * [Chapter5. 안정 해시 설계](undefined/chapter5..md)
