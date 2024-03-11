@@ -7,3 +7,4 @@
   * [Chapter4. 처리율 제한 장치의 설계](undefined/chapter4./README.md)
     * [Chapter 4-1. 대표적인 처리율 관련 알고리즘](undefined/chapter4./chapter-4-1..md)
   * [Chapter5. 안정 해시 설계](undefined/chapter5..md)
+  * [Chapter6. Key-Value 저장소 설계](undefined/chapter6.-key-value.md)
