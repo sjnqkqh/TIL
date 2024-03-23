@@ -27,9 +27,9 @@ description: >-
 
     #### 뉴스 피드 시스템 설계를 위한 질문 담화 예시
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image%20(2)%20(1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image%20(1)%20(1)%20(1).png" alt=""><figcaption></figcaption></figure>
 
 #### 2단계. 개략적인 설계안 제시 및 동의 구하기
 

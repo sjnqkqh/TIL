@@ -14,7 +14,7 @@
 
 * SHA-1을 예로 들어 해시 공간의 범위는 0부터 2^160-1까지로 할당된다. 이 때 선형적인 해시 공간을 관념적으로 구부리면 그림 5-4와 같이 구성할 수 있다.
 
-<figure><img src="../.gitbook/assets/image (5).png" alt="" width="375"><figcaption><p>관념적으로 그린 해시 링</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image%20(5).png" alt="" width="375"><figcaption><p>관념적으로 그린 해시 링</p></figcaption></figure>
 
 #### 서버 조회
 
@@ -30,7 +30,7 @@
 
 ### 가상 노드, Replica
 
-<figure><img src="../.gitbook/assets/image (10).png" alt="" width="563"><figcaption><p>가상 노드가 적용된 해시 링. 가상 노드가 늘어날 수록 표준 편차가 감소한다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image%20(10).png" alt="" width="563"><figcaption><p>가상 노드가 적용된 해시 링. 가상 노드가 늘어날 수록 표준 편차가 감소한다.</p></figcaption></figure>
 
 * 간략히 설명해서 서버 사이사이에 서버를 가르키는 가상 노드를 심어두고 해시 키가 가상 노드를 참조 연결 - 가상 노드가 실제 서버를 참조 하는 방식으로 연결하는 형태이다.
 * 해당 방식을 사용하게 되면 가상 노드의 갯수가 증가할 수록 표준편차가 줄어들어 데이터가 균형있게 저장되는 장점이 있다. 단, 가상 노드 자체가 차지하는 공간이 증가하므로 어느 정도의 타협이 필요하다.

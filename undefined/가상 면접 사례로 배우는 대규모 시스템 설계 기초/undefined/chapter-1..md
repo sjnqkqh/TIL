@@ -6,7 +6,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ## 데이터베이스
 
-<figure><img src="../.gitbook/assets/Untitled (1) (1) (1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%20(1)%20(1)%20(1).png" alt="" width="375"><figcaption><p>웹 계층과 데이터 계층을 분리하면 각각의 상황에 따라 스케일링할 수 있다.</p></figcaption></figure>
 
 * 대부분의 상황에 RDBMS는 좋은 선택지지만 아래와 같은 요구사항이 있을 경우엔 NoSql을 고려해볼 수도 있다.
   * 아주 낮은 응답 지연시간이 요구됨
@@ -24,7 +24,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### Load Balancer
 
-<figure><img src="../.gitbook/assets/Untitled 1 (2).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%201%20(2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 * 클라이언트가 DNS를 통해 서버가 아닌 로드밸런서로 요청을 보내고, 로드밸런서가 각 서버로 리퀘스트를 할당해준다. 일종의 프록시 서버의 역할
 * 이를 통해 서버의 failover를 구현할 수 있다. 장애가 발생한 서버엔 리퀘스트를 전달하지 않음으로써 가용성이 향상된다. 또한 배포 전략을 롤링이나 블루/그린 등으로 선택하여 무중단 배포가 가능해진다.
@@ -33,20 +33,20 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### DB 다중화
 
-<figure><img src="../.gitbook/assets/Untitled 2 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%202%20(1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 * 읽기 + 쓰기 전용인 Main Server와 읽기 전용인 Replica Server를 통해 DB의 가용성을 증가시킬 수 있다. 본 도서에선 Master, Slave Server라고 명시했지만 해당 용어는 더 이상 쓰지 않는 점을 인지하고 있자. → 단, Mysql 같은 RDBMS에서 하위 호환성을 위해 설정 정보 등에 master, slave라는 단어를 쓰기는 한다. 알아만두자
 * DB 다중화에 따라 쿼리의 병렬 처리가 가능해지고, 안정성이 증대된다. 또한 가용성도 증가하는 결과를 일으킨다.
 * replica 서버가 다운되면 다른 레플리카 서버가 읽기 작업을 분산하여 수행하며, 레플리카가 한 대였는데 이게 다운된 경우엔 메인 서버가 읽기 작업까지 수행한다.
 * 소스 서버가 다운되면 레플리카 서버 중 하나가 새로운 메인 서버로 추대된다. 이 때 동기화 되지 못한 데이터가 소실될 수 있기 때문에 Tranaction log, Relay log를 통한 복구가 필요 할 수 있다.
 
-<figure><img src="../.gitbook/assets/Untitled 3 (1).png" alt="" width="375"><figcaption><p>지금까지의 내용들이 포함된 아키텍쳐</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%203%20(1).png" alt="" width="375"><figcaption><p>지금까지의 내용들이 포함된 아키텍쳐</p></figcaption></figure>
 
 ***
 
 ## Cache
 
-<figure><img src="../.gitbook/assets/Untitled 4 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%204%20(1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * 캐시 계층은 데이터를 잠시 보관하는 계층으로 DB보다 훨씬 빠르며 독립적으로 규모를 확장시킬 수 있다.
 * 요청에 따른 결과를 반환하기 위해 캐시를 먼저 탐색하고 유무로 따라 데이터베이스를 탐색하는 방식을 읽기 주도형 캐시 전략이라고 한다. 이외의 캐시 전략들은 여러 가지가 있다. \[_6번 자료 참조,_ [_Caching Starategies and How to Choose the Right One_](https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one)_]_
@@ -66,9 +66,9 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### CDN
 
-<figure><img src="../.gitbook/assets/Untitled 5 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%205%20(1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Untitled 6.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%206.png" alt="" width="375"><figcaption></figcaption></figure>
 
 * Contents Deliver Network의 약어. 즉, 정적 컨텐츠를 전달하는 지리적으로 분산된 서버의 네트워크다. 물리적으로 가까운 위치에서 정적 컨텐츠 (CSS, HTML 등)을 전송하기 위해 사용한다.
 * CDN은 보통 3rd party를 통해 운영되며, CDN으로 입출력되는 데이터의 양에 따라 과금액이 결정된다. 따라서 CDN에 저장될 컨텐츠는 자주 사용되는 놈들만 골라서 저장하는게 좋다.
@@ -76,7 +76,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 * CDN 서버의 장애에 따른 대응 방안도 미리 마련되어 있어야 한다.
 * 아직 만료되지 않은 컨텐츠라도 CDN 사업자가 제공하는 API나 오브젝트 버저닝을 통해 컨텐츠를 무효화 할 수 있다.
 
-<figure><img src="../.gitbook/assets/Untitled 7.png" alt="" width="375"><figcaption><p>CDN이 추가된 서버 아키텍쳐</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%207.png" alt="" width="375"><figcaption><p>CDN이 추가된 서버 아키텍쳐</p></figcaption></figure>
 
 ***
 
@@ -84,9 +84,9 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 * 상태 정보를 서버에 보관하는 방식은 확장성에 있어서 치명적인 약점을 갖는다. 따라서 서버가 별도로 상태 정보를 보관하기 보단 요청에 따라 처리되는 무상태 아키텍쳐를 유지하는 것이 바람직하다.
 
-<figure><img src="../.gitbook/assets/Untitled 8.png" alt="" width="375"><figcaption><p>상태 정보를 저장하는 서버의 사례. 사용자와 서버가 꼬이면 오류가 발생할 가능성이 매우 높다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%208.png" alt="" width="375"><figcaption><p>상태 정보를 저장하는 서버의 사례. 사용자와 서버가 꼬이면 오류가 발생할 가능성이 매우 높다.</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Untitled 9.png" alt="" width="375"><figcaption><p>무상태 아키텍쳐 예. 사용자의 HTTP 요청이 어떤 웹 서버로 전달되더라도 이상이 없다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%209.png" alt="" width="375"><figcaption><p>무상태 아키텍쳐 예. 사용자의 HTTP 요청이 어떤 웹 서버로 전달되더라도 이상이 없다.</p></figcaption></figure>
 
 * 무상태 서버에선 상태 정보가 필요할 때 공유저장소에서 데이터를 조회한다.
 * 따라서 상태 정보는 웹 서버로부터 물리적으로 분리되어 있다.
@@ -95,7 +95,7 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### 데이터센터
 
-<figure><img src="../.gitbook/assets/Untitled 10.png" alt=""><figcaption><p>이중화된 데이터 센터</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2010.png" alt=""><figcaption><p>이중화된 데이터 센터</p></figcaption></figure>
 
 * 데이터센터를 다중화하는 방식은 몇가지 어려운 부분들을 극복해야한다.
   * 트래픽 우회: 어느 데이터센터로 트래픽을 전송하는 것이 가장 올바른 방법일지를 정해야한다.
@@ -108,11 +108,11 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 * 메시지 큐는 메시지가 일단 큐에 들어가면 Consumer가 소비하기 까지`(메시지 큐에 따라 소비한 이후로도 유지되기도 한다. like kafka)` 무손실성을 갖는 비동기 통신 지원 컴포넌트다.
 * 보통 발행자, 소비자로 구성된 pub/sub 형태고 중간에 메시지 큐가 매개체 역할을 한다.
 
-<figure><img src="../.gitbook/assets/Untitled 11.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2011.png" alt=""><figcaption></figcaption></figure>
 
 * 메시지 큐를 사용하면 서비스 간 결합이 느슨해지기 때문에 규모 확장성이 보장되어야 하는 어플리케이션에 적합하다.
 
-<figure><img src="../.gitbook/assets/Untitled 12.png" alt=""><figcaption><p>메시지 큐가 사용되는 서비스 예시. 시간이 오래 걸리는 작업은 큐에 넣어두고 순차적으로 처리한다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2012.png" alt=""><figcaption><p>메시지 큐가 사용되는 서비스 예시. 시간이 오래 걸리는 작업은 큐에 넣어두고 순차적으로 처리한다.</p></figcaption></figure>
 
 ***
 
@@ -125,18 +125,18 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
   * 핵심 비즈니스 메트릭: DAU, 수익, 재방문 등
 * 자동화: 시스템이 크고 복잡해지면 생산성을 위해 자동화 도구를 활용해야한다. CI/CD, 자동화 테스트 등이 여기에 해당한다. 가성비가 아주 높은 도구들이니 잘 활용할 수 있도록 해야한다.
 
-<figure><img src="../.gitbook/assets/Untitled 13.png" alt=""><figcaption><p>도구들까지 포함된 아키텍쳐</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2013.png" alt=""><figcaption><p>도구들까지 포함된 아키텍쳐</p></figcaption></figure>
 
 ***
 
 ### 데이터베이스 규모의 확장
 
-<figure><img src="../.gitbook/assets/Untitled 14.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2014.png" alt=""><figcaption></figcaption></figure>
 
 * 수직 확장: 서버 성능을 높여서 처리량과 저장 공간을 늘리는 방식이다. 으레 갈수록 훨씬 비싸지고 가용성이 떨어지기 때문에 권하기 어렵다. 또한 결국 물리적인 한계점이 존재한다.
 * 수평 확장: DB의 수평적 확장을 샤딩이라고도 한다. 모든 샤드는 같은 스키마를 사용하지만, 샤드에 보관되는 데이터 사이에는 중복이 없다.
 
-<figure><img src="../.gitbook/assets/Untitled 15.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2015.png" alt=""><figcaption></figcaption></figure>
 
 * 샤딩 전략을 구성하기 위해선 샤딩 키(혹은 파티션 키) 전략이 가장 중요한 역할을 한다. 얘를 잘 쪼개야 데이터 조회나 변경에 따른 비효율이 줄어든다.
 * 데이터베이스 샤딩에 따라 고려해야할 점
@@ -148,4 +148,4 @@ description: 본 장에선 일반적인 웹 서버를 확장성 있는 구조로
 
 ### Summary
 
-<figure><img src="../.gitbook/assets/Untitled 16.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Untitled%2016.png" alt="" width="375"><figcaption></figcaption></figure>

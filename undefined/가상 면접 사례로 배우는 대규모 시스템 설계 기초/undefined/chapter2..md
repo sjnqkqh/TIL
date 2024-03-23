@@ -8,7 +8,7 @@ description: >-
 
 #### 모든 프로그래머가 알아야 하는 응답지연 값
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image%20(3)%20(1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67.png" alt=""><figcaption></figcaption></figure>
 
