@@ -1,4 +1,3 @@
 # Table of contents
 
-* [책장 소개](README.md)
-  * [Clean Code](undefined/clean-code.md)
+* [개발자를 위한 친절한 SQL 튜닝](README.md)
