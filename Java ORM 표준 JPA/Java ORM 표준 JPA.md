@@ -10,7 +10,7 @@
 
 - 실제로 사용되는 시점에 데이터베이스에 조회 후, 엔티티 객체로 사용되는데 이걸 프록시 객체 초기화라고 함
 
-	![Untitled](b5612548_Untitled.png)
+	![Untitled](./assets/b5612548_Untitled.png)
 
 - 프록시 객체는 처음 사용할 때만 초기화된다.
 
@@ -20,11 +20,11 @@
 
 - 프록시 객체는 초기화 이전에 ID 값만 가지고 있기 때문에 다음과 같이 연관9관계를 설정할 때 유용하다. 굳이 Team 객체를 초기화할 필요가 없기 때문
 
-	![Untitled](78cba1cd_Untitled.png)
+	![Untitled](./assets/78cba1cd_Untitled.png)
 
 - 하이버네이트는 엔티티를 영속 상태로 만들 때, 엔티티에 컬렉션이 있으면 컬렉션을 추적하고 관리할 목적으로 원본 컬렉션을 하이버네이트가 제공하는 내장 컬렉션으로 변경하는데 이것을 컬렉션 래퍼라고 한다.
 
-	![Untitled](bc12a609_Untitled.png)
+	![Untitled](./assets/bc12a609_Untitled.png)
 
 - 엔티티를 지연 로딩하면 프록시 객체를 사용해서 지연 로딩을 수행하고, 컬렉션 객체를 지연 로딩하면 컬렉션 래퍼를 동해 지연 로딩을 수행한다.
 
@@ -34,7 +34,7 @@
 
 - 컬렉션을 하나 이상 즉시 로딩하는 것은 권장하지 않는다. 컬렉션 조인은 데이터베이스 사이드에서 1:N 조인과 마찬가지인데, 이건 결국 N만큼 조인을 진행하게된다. 문제는 컬렉션이 둘 이상, 즉 2개 이상의 테이블과 조인하게 되면 N * M 만큼 결과값이 증가하게 된다. 성능상의 악영향이 있을 가능성이 아주 높다.
 
-![Untitled](2069f2f8_Untitled.png)
+![Untitled](./assets/2069f2f8_Untitled.png)
 
 <br/>
 
@@ -42,7 +42,7 @@
 
 - JPA에서 엔티티를 저장할 때 객체와 연관된 모든 객체는 영속 상태여야 한다. 따라서 Parent 객체에 포함된 childList의 객체들도 영속화가 필요한데, 이를 돕는게 영속성 전이(Cascade)
 
-	![Untitled](5a00368e_Untitled.png)
+	![Untitled](./assets/5a00368e_Untitled.png)
 
 - 영속성 전이는 연관관계를 매핑하는 것과는 관련이 없으며, 엔티티를 영속화할 때 엔티티를 같이 영속화하는 편의성 기능이다.
 
@@ -94,7 +94,7 @@
 
 - JPQL API는 대부분 메소드 체인 방식으로 설계되어 있어서 아래와 같이 연속해서 파라미터를 설정할 수 있다.
 
-	![Untitled](9c148b35_Untitled.png)
+	![Untitled](./assets/9c148b35_Untitled.png)
 
 - 파라미터 바인딩을 사용하지 않고, JPQL 쿼리를 직접 만들게되면 Query Injection에 취약해지고, DB에서 Query Parsing을 매번 진행해야해서 성능이 하락한다.
 
@@ -102,11 +102,11 @@
 
 - 임베디드 타입은 스스로 조회할 수 없고, 원본 엔티티를 조회하고 그 안의 임베디드 타입을 조회하는 방식으로 컨택할 수 있다. 다만 이건 영속 컨택스트에서 관리되진 않는다. (엔티티가 아니니까…!)
 
-	![Untitled](5801b3bf_Untitled.png)
+	![Untitled](./assets/5801b3bf_Untitled.png)
 
 - 페이징은 setFirstResult(), setMaxResult() API를 통해 추상화된다. 
 
-	![Untitled](82f1d462_Untitled.png)
+	![Untitled](./assets/82f1d462_Untitled.png)
 
 - 조인도 가능하고 SQL과 유사하지만, 두 개 이상의 엔티티를 같이 조회하려면 TypeQuery 객체는 사용할 수 없다. (DTO 클래스를 만들어서 사용할 수는 있을)
 
@@ -116,17 +116,17 @@
 
 - 또한 엔티티에 포함된 컬렉션도 페치 조인으로 한번에 조회할 수 있다. 다만 이 경우 컬렉션 레코드를 기준으로 row가 나올 수 있다.
 
-	![Untitled](eb3f0165_Untitled.png)
+	![Untitled](./assets/eb3f0165_Untitled.png)
 
 - 때문에 이런 현상을 방지하고자 DISTINCT 옵션을 사용하여 SQL과 어플리케이션에서 중복을 제거할 수 있다.
 
-	![Untitled](716dd3a4_Untitled.png)
+	![Untitled](./assets/716dd3a4_Untitled.png)
 
-	![Untitled](c18109b9_Untitled.png)
+	![Untitled](./assets/c18109b9_Untitled.png)
 
 - 다만 이 경우 SQL만으로는 중복 제거가 명확하게 이뤄지지 않기 때문에 어플리케이션에서 한 번 더 엔티티를 기준으로 중복을 제거한다.
 
-	![Untitled](fc448630_Untitled.png)
+	![Untitled](./assets/fc448630_Untitled.png)
 
 - 페치 조인을 사용하지 않고, JPQL을 사용하여 INNER JOIN 처리하면 의외로 조인 엔티티는 함께 나오지 않는다. JPQL은 연관관계는 고려하지 않기 때문이다.
 
@@ -134,11 +134,11 @@
 
 - JPA 표준에선 FetchJoin 대상에 별칭을 줄 수 없지만, 구현체에 따라 가능한 경우가 있따. 다만 2차 캐시와 연계되어 연관된 데이터의 정합성이 망가질 수 있기에 사용에 주의를 요한다.
 
-	![Untitled](7ba8b447_Untitled.png)
+	![Untitled](./assets/7ba8b447_Untitled.png)
 
 - 또한 둘 이상의 컬렉션을 페치할 수는 없다. 구현체에 따라 가능하긴 한데, 컬렉션의 카타시안 곱으로 결과값이 만들어지기 때문에 주의해야한다. 
 
-	![Untitled](09a1f74e_Untitled.png)
+	![Untitled](./assets/09a1f74e_Untitled.png)
 
 하이버네이트에서 2개 이상의 컬렉션을 페치 조인한 경
 
@@ -150,7 +150,7 @@
 
 - . 으로 엔티티 내부 필드에 접근하는 방식
 
-![Untitled](5c81704c_Untitled.png)
+![Untitled](./assets/5c81704c_Untitled.png)
 
 - 상태 필드 - 단순히 값을 저장하기 위한 필드
 
@@ -160,7 +160,7 @@
 
 	- 컬렉션 값 연관 필드 - @OneToOMany, @ManyToMany 
 
-	![Untitled](fd56f7a7_Untitled.png)
+	![Untitled](./assets/fd56f7a7_Untitled.png)
 
 - 상태 필드는 한 번 접근하면 더 탐색 할 수 없다.
 
@@ -180,11 +180,11 @@
 
 - 미리 정의한 쿼리에 이름을 부여해서 사용할 수 있다. 한 번 정의하면 변경할 수 없는 정적인 쿼리. 애플리케이션 로딩 시점에 JPQL 문법을 체크하고 미리 파싱해둔다. @NamedQuery 어노테이션을 사용해서 자바 코드에 저장하거나 XML 문서에 저장할 수 있다.
 
-	![Untitled](b91bbd9d_Untitled.png)
+	![Untitled](./assets/b91bbd9d_Untitled.png)
 
 - 자바에선 멀티라인 문자열을 다루는게 퍽 거지같기 때문에 XML을 사용하는 것도 편리하다. 특히 같은 이름의 NamedQuery가 어노테이션과 XML에 둘 다 있을 경우 XML의 쿼리가 우선적으로 선택된다.  
 
-	![Untitled](d04cf7f3_Untitled.png)
+	![Untitled](./assets/d04cf7f3_Untitled.png)
 
 다만 Mybatis를 사용할 때와 마찬가지로 이런 불편함이 있다…
 
@@ -196,7 +196,7 @@
 
 - 어노테이션 프로세서를 사용해 쿼리 전용 클래스를 만들어서 사용함 (QMember, QAddress…)
 
-	![Untitled](0aeac321_Untitled.png)
+	![Untitled](./assets/0aeac321_Untitled.png)
 
 - Q 클래스는 기본적으로 사용하기 편하게 기본 인스턴스를 보관하지만, 같은 엔티티를 조인하거나, 같은 엔티티를 서브쿼리에 사용하면 같은 별칭이 사용되기 때문에 직접 다른 별칭을 지정해줘야 한다.
 
@@ -214,7 +214,7 @@
 
 - Select 절에 조회 대상을 지정하는 것을 프로젝션이라고 한다. 조회 대상이 하나라면 해당 타입으로 반환하여 사용하면 되고, 여러 대상을 프로젝션할 땐 Tuple을 사용한다.
 
-	![Untitled](19505834_Untitled.png)
+	![Untitled](./assets/19505834_Untitled.png)
 
 - 엔티티가 아닌 클래스를 대상으로 프로젝션 수행 시, Projections.bean()을 통해 조회할 수 있다. 이 때 메소드는 Setter를 통해 빈 값을 생성하기 때문에 반드시 Setter가 필요하다.
 
@@ -271,7 +271,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - JPQL은 영속성 컨텍스트에 있는 데이터를 고려하지 않기 때문에 JPQL를 실행하기 전에 영속성 컨텍스트의 데이터는 반영해주는게 좋다.
 
-	![Untitled](955ba313_Untitled.png)
+	![Untitled](./assets/955ba313_Untitled.png)
 
 이 경우 Flush  없이는 2000원 상품 조회에 걸리지 않는다.
 
@@ -279,11 +279,11 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
  
 
-![Untitled](29b15a31_Untitled.png)
+![Untitled](./assets/29b15a31_Untitled.png)
 
-![Untitled](19b31b51_Untitled.png)
+![Untitled](./assets/19b31b51_Untitled.png)
 
-![Untitled](bf47cf5b_Untitled.png)
+![Untitled](./assets/bf47cf5b_Untitled.png)
 
 <br/>
 
@@ -291,7 +291,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 ---
 
-![Untitled](259e7c1c_Untitled.png)
+![Untitled](./assets/259e7c1c_Untitled.png)
 
 ### 쿼리 메소드 기능
 
@@ -318,7 +318,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 종종 직접 구현체를 만들어야 하는 경우도 있는데, 이럴 떈 리포지토리를 쌩으로 구현하기 보단, 사용자 정의 인터페이스를 만들고 이걸 확장하는게 백번 편하다.
 
-	![Untitled](38005052_Untitled.png)
+	![Untitled](./assets/38005052_Untitled.png)
 
 - 이후 해당 인터페이스를 구현한 클래스를 만들다. 클래스 명은 반드시 인터페이스명에 Impl을 더해서 만들어야 한다. (그래야 스프링 데이터 JPA가 확장 클래스로 인식함)
 
@@ -368,7 +368,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - FetchType이 EAGER일 때, 리스트 객체의 수 + 1번 만큼 쿼리가 나가는 현상이 발생한다. 이 문제는 JPQL 페치 조인으로 해결할 수 있다. 
 
-	![Untitled](6e083c52_Untitled.png)
+	![Untitled](./assets/6e083c52_Untitled.png)
 
 - 다만 fetchJoin을 무분별하게 사용하면서 A, B… 처럼 메소드를 늘려나가면 프레젠테이션 계층이 데이터 계층에 의존성을 갖게된다. 이 경우 차라리 Order와 Member를 함께 Fetch Join호출하는 메소드 하나만을 두고 함께 사용하는게 나을 수 있다.
 
@@ -396,11 +396,11 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 따라서 최근에는 요청 당 트랜잭션 방식은 잘 사용하지 않고, 스프링 OSIV 방식을 주로 채택한다. ~~이제 알려주는거 봐 이 깍쟁이~~
 
-	![Untitled](29b5a6f4_Untitled.png)
+	![Untitled](./assets/29b5a6f4_Untitled.png)
 
 - 스프링에서 제공하는 OSIV는 비즈니스 계층에서 트랜잭션을 사용하는 OSIV다. 영속성 컨텍스트는 프레젠테이션 계층에서도 살아있지만,  수정은 불가능하다.
 
-	![Untitled](64488537_Untitled.png)
+	![Untitled](./assets/64488537_Untitled.png)
 
 - 스프링 OSIV를 사용하면 서비스 계층에서 트랜잭션이 종료되고, 영속성 컨텍스트는 종료되지 않는다. 또한 영속성 컨텍스트의 모든 변경은 트랜잭션 안에서 이뤄져야한다. 때문에 트랜잭션이 종료된 이후 엔티티를 수정하고, 플러시하면 TransactionRequiredException이 발생한다.
 
@@ -418,7 +418,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 원래는 ArrayList였던 컬렉션 필드를 영속화를 거치고 난 이후 PersistentBag으로 바꾼다. 이후 원본 컬렉션을 감싸는 하이버네이트 내장 컬렉션으로 참조를 바꿔서 관리한다.
 
-![Untitled](60de446a_Untitled.png)
+![Untitled](./assets/60de446a_Untitled.png)
 
 - Collection, List는 기본적으로 중복을 허용하기 때문에 add() 이후에도 딱히 지연 로딩 컬렉션을 초기화하지 않는다. 굳이 그럴 이유가 없기 때문
 
@@ -430,9 +430,9 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 모든 엔티티를 대상으로 언제 어떤 사용자가 삭제를 요청했는지 로깅하는 코드를 작성하는 건 비효율적이므로, JPA 리스너 기능을 사용하여 엔티티 생명주기에 따른 이벤트를 처리할 수 있다.
 
-![Untitled](a34e139b_Untitled.png)
+![Untitled](./assets/a34e139b_Untitled.png)
 
-![Untitled](3501a1eb_Untitled.png)
+![Untitled](./assets/3501a1eb_Untitled.png)
 
 <br/>
 
@@ -446,11 +446,11 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 후자는 그렇게까지 심각하진 않다. 따라서 개발자가 용도에 맞게 커밋과 롤백을 결정할 수 있다.
 
-![Untitled](4c4ef432_Untitled.png)
+![Untitled](./assets/4c4ef432_Untitled.png)
 
 - 다만, 서비스 계층에서 데이터 접근 계층의 예외에 직접 접근하는 것은 서비스 계층이 특정 기술에 의존하게 하므로, 스프링에선 JPA 예외를 추상화하여 사용자에게 제공한다.
 
-![Untitled](23ec5281_Untitled.png)
+![Untitled](./assets/23ec5281_Untitled.png)
 
 - JPA 예외를 스프링 프레임워크의 추상화 예외로 변경하려면 PersistenceExceptionTranslationPostProcessor를 스프링 빈으로 등록하면 된다. 
 
@@ -492,7 +492,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 또한 상속 관계가 있는 엔티티의 부모 엔티티를 프록시로 조회하면 문제가 생길 수 있다. 
 
-	![Untitled](396c648c_Untitled.png)
+	![Untitled](./assets/396c648c_Untitled.png)
 
 	이 경우 proxyItem은 Item을 상속한 **프록시 클래스 객체**이기 때문에 Book 클래스와는 전혀 연관관계가 없는것. 따라서 저 조건문은 그냥 지나가버린다. 또한 조건문을 실행한다고 하더라도 Book으로 다운그레이드가 불가능하기 때문에 ClassCastException 예외가 발생한다.
 
@@ -514,13 +514,13 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - Fetch Join
 
-	![Untitled](ce627176_Untitled.png)
+	![Untitled](./assets/ce627176_Untitled.png)
 
 	- 이 예제는 1대다 조인을 사용하여 중복된 결과가 나올 수 있으므로 DISTINCT 키워드를 사용하여 중복을 제거해야한다.
 
 - Hibernate  — `@BatchSize`
 
-	![Untitled](cae62ea6_Untitled.png)
+	![Untitled](./assets/cae62ea6_Untitled.png)
 
 	- 하이버네이트가 제공하는 어노테이션을 통해, 특정 필드를 조회할 떄 지정한 size만큼 SQL의 IN절을 사용해 조회한다. IN 절이 성능상 좋은 편은 아니지만 N+1 문제가 발생하는 것보단 낫다.
 
@@ -528,11 +528,11 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - Hibernate — `@Fetch`
 
-	![Untitled](ea71d5f9_Untitled.png)
+	![Untitled](./assets/ea71d5f9_Untitled.png)
 
 - 해당 어노테이션 적용 시, EAGER라면 엔티티 조회 시, LAZY라면 지연 로딩된 엔티티 사용시 Subquery를 사용하여 초기화한다.
 
-	![Untitled](3d47e618_Untitled.png)
+	![Untitled](./assets/3d47e618_Untitled.png)
 
 ---
 
@@ -563,23 +563,23 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - `DB Paging 기능을 사용하는 배치 처리 예시`
 
-	![Untitled](6624176a_Untitled.png)
+	![Untitled](./assets/6624176a_Untitled.png)
 
 - JPA는 JDBC Cursor를 지원하지 않기 때문에, 하이버네이트 세션을 얻어내서 사용해야한다.
 
 - `하이버네이트 세션 unwrap - scroll`
 
-	![Untitled](19ab445e_Untitled.png)
+	![Untitled](./assets/19ab445e_Untitled.png)
 
-	![Untitled](4e570bcd_Untitled.png)
+	![Untitled](./assets/4e570bcd_Untitled.png)
 
 - `하이버네이트 무상태 세션 사용`
 
 	무상태 세션은 영속성 컨텍스트를 만들지 않고, 2차 캐시도 기본적으로 사용하지 않는다. 다만, 영속성 컨텍스트가 없기에 수정 시 session의 update()를 호출하여 갱신해줘야 한다.
 
-	![Untitled](b225c3b4_Untitled.png)
+	![Untitled](./assets/b225c3b4_Untitled.png)
 
-	![Untitled](22d8562d_Untitled.png)
+	![Untitled](./assets/22d8562d_Untitled.png)
 
 	<br/>
 
@@ -599,7 +599,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 하이버네이트에선 SQL 배치 기능을 지원하므로 이를 활성화해서 쓰기 지연을 실행할 수 있다. 
 
-![Untitled](7926b14f_Untitled.png)
+![Untitled](./assets/7926b14f_Untitled.png)
 
 - 다만, 식별자 생성 전략이 IDENTITY인 경우엔, 엔티티를 데이터베이스에 저장해야만 식별자를 구할 수 있으므로 em.persist를 호출하는 즉시 INSERT 쿼리가 날아간다. 때문에 이 방식을 통한 쓰기 지연은 불가하다.
 
@@ -625,7 +625,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 	- 동시 트랜잭션 처리 속도가 떨어짐, 아노말리 X
 
-	![Untitled](46fda02b_Untitled.png)
+	![Untitled](./assets/46fda02b_Untitled.png)
 
 	<br/>
 
@@ -641,7 +641,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 두 명의 사용자가 하나의 공지사항을 순서대로 수정 후 커밋했을 때, 마지막 내용만 커밋되는 문제 
 
-![Untitled](ffbdcdff_Untitled.png)
+![Untitled](./assets/ffbdcdff_Untitled.png)
 
 - 때때로 최초 커밋만 인정하는 방식을 택할 수 있는데 이 떄 JPA의 버전 관리 방식을 사용할 수 있다.
 
@@ -688,7 +688,7 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - persistence.xml에서 캐시 모드를 설정할 수 있으며, 기본적으론 ENABLE_SELECTIVE를 사용한다. 
 
-![Untitled](b0aa6df9_Untitled.png)
+![Untitled](./assets/b0aa6df9_Untitled.png)
 
 <br/>
 
@@ -712,9 +712,9 @@ JPA 플러시는 플러시 모드에 따라 아래와 같이 나뉜다.
 
 - 속성으로 usage, region, include를 포함하며, usage 속성은 캐시 동시성 전략을 설정할 수 있기에 중요하다.
 
-	![Untitled](d95f54cb_Untitled.png)
+	![Untitled](./assets/d95f54cb_Untitled.png)
 
-	![Untitled](ea6cf4a8_Untitled.png)
+	![Untitled](./assets/ea6cf4a8_Untitled.png)
 
 - 2차 캐시 기능 중, Query Cache와 Collection Cache를 사용할 땐 반드시 Entity Cache기능을 사용해야한다.
 
