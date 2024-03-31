@@ -1,6 +1,6 @@
-# Summary
+# Table of contents
 
-* [Introduction](README.md)
+* [스프링 배치 완벽 가이드](README.md)
 * [2. 스프링 배치](markdowns/2.%20스프링%20배치.md)
 * [4. 잡과 스텝](markdowns/4.%20잡과%20스텝.md)
 * [5. JobRepository와 메타데이터](markdowns/5.%20JobRepository와%20메타데이터.md)
