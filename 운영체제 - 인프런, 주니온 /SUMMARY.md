@@ -5,4 +5,4 @@
   * [2강. 운영체제 동작 개요](readme/2-..md)
   * [3강. 프로세스 개요](readme/3-..md)
   * [4강. 프로세스의 생성](readme/4-..md)
-  * [Post](readme/post.md)
+  * [5강. 프로세스간 통신 (IPC)](readme/post.md)

@@ -1,2 +1,13 @@
-# Post
+# 5강. 프로세스간 통신 (IPC)
 
+* 프로세스 간 통신이 필요한 경우가 있다. 서로 영향을 주고 받고 하는 경우
+* _Inter Process Communication - IPC_: 프로세스 간 통신 메커니즘
+* IPC는 두 가지 모델이 있다.
+  * 공유 공간을 이용하는 방법
+    * 운영체제가 관리하는 공유 메모리 영역에 버퍼를 만들어서 `Producer - Consumer Model` 로 데이터를 전송함
+    * 관계를 맺는 클라이언트들이 많아질수록 구현의 복잡성이 증가함
+  * 메시지를 주고 받는 방법 - 운영체제에게 통신 책임을 위임
+    * OS가 Message Passing을 제어하고, 프로듀서가 메시지의 생성만을 관리하는 방식
+    * send(message), receive(message) 두 개의 상호작용으로 구현된다.
+    * direct방식과 indirect 방식으로 나뉜다.
+    * `MailBox(port)`를 통해 복잡한 커뮤니케이션 링크를 구성하기 쉽다.
