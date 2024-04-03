@@ -20,4 +20,3 @@
 * [21강. Virtual Memory](markdowns/21강.%20Virtual%20Memory.md)
 * [22강. 페이지 교체 알고리즘](markdowns/22강.%20페이지%20교체%20알고리즘.md)
 * [23강. 스토리지와 IO](markdowns/23강.%20스토리지와%20IO.md)
-* [24강. 운영체제의 보안](markdowns/24강.%20운영체제의%20보안.md)
