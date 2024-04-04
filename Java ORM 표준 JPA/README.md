@@ -1,5 +1,7 @@
 # Java ORM 표준 JPA - 김영한 저
 
+<figure><img src=".gitbook/assets/다운로드.jpeg" alt=""><figcaption></figcaption></figure>
+
 자바 ORM 표준 JPA (2015, 김영한 저, 에이콘 출판사)을 읽고 핵심적인 개념 (FetchType, Proxy, Entity Manager... )들을 요약하여 정리하였습니다.&#x20;
 
 JPA 기술 자체는 사용하기에 굉장히 편리하지만 추상화 정도가 높기에 핵심적인 내부 동작들을 이해하지 못하면 부작용이 발생할 가능성이 다분합니다. 해당 도서는 국내에서 한글로 된 서적으로는 유일하게 JPA 내부 동작 및 원리를 설명하여 개발자가 현업에서 마주할 수 있는 문제를 방지할 수 있도록 돕습니다.
