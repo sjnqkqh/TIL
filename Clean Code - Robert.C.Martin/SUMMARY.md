@@ -7,5 +7,5 @@
   * [5. 형식 맞추기](<clean-code/5. 형식 맞추기.md>)
   * [7. 오류 처리](<clean-code/7. 에러 처리.md>)
   * [8. 경계](<clean-code/8. 경계.md>)
-  * [9. 단위 테스트](<clean-code/9. 단위 테스트.md>)
+  * [9. 단위 테스트](<clean-code/9. 단위 테스트.md>) 
   * [10. 클래스](<clean-code/10. 클래스.md>)
