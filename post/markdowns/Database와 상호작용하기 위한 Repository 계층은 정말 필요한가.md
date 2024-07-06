@@ -111,7 +111,7 @@ Hibernate 제안대로 Repository Layer를 걷어내고 Service Layer에서 위�
 1. **QueryMethod로 정의한 함수들이 서비스 클래스에서 HQL, JPQL, DSL로 재구현**
 2. **Custom Repository Implementateion 메서드 재구현**
 
-\
+
 
 
 ***
