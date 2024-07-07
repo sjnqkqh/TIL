@@ -112,8 +112,6 @@ Hibernate 제안대로 Repository Layer를 걷어내고 Service Layer에서 위�
 2. **Custom Repository Implementateion 메서드 재구현**
 
 
-
-
 ***
 
 #### Summary
