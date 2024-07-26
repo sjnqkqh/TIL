@@ -1,5 +1,3 @@
----
-
 **요약: Hibernate 진영에선 Spring Data JPA와 같은 프레임워크가 권장하는 Repository Layer가 필요치 않다고 주장합니다. 근데 전 아닌 것 같아요…!**
 
 <br/>
