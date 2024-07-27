@@ -1,6 +1,6 @@
 ### 
 
-![Untitled](./assets/45b27456_Untitled.png)
+![](./assets/45b27456_Untitled.png)
 
 ### Intellij-JVM 디버거는 어썸해요…!
 
@@ -14,7 +14,7 @@
 
 <br/>
 
-![Untitled](./assets/8a7107dd_Untitled.png)
+![](./assets/8a7107dd_Untitled.png)
 
 <br/>
 
@@ -187,11 +187,11 @@ run:833, Thread (java.lang)
 
 	[//]: # (column is not supported)
 
-		![Untitled](./assets/307b6797_Untitled.png)
+		![](./assets/307b6797_Untitled.png)
 
 	[//]: # (column is not supported)
 
-		![Untitled](./assets/2d3c8d97_Untitled.png)
+		![](./assets/2d3c8d97_Untitled.png)
 
 오늘의 예시를 위해 Controller에 Break Point를 걸어두고 해당 API를 호출해봤습니다. 그리고 Debuger의 Threads Stack Trace Tab에는 150줄의 Trace가 생성되었습니다. 다른 쓰레드들도 활발하게 동작 중인 것을 감안하면 훨씬 더 많은 작업들이 프로그램 안에서 실행중인 셈이죠.
 
@@ -203,19 +203,19 @@ run:833, Thread (java.lang)
 
 ### Tread.run()부터 살펴보기
 
-![Untitled](./assets/37887320_Untitled.png)
+![](./assets/37887320_Untitled.png)
 
 가장 먼저 [Tread.run](http://tread.run/) 메서드가 실행됩니다. target 객체의 클래스까지 확인 가능하네요. TaskThread 클래스에 포함된 private class 인 WrappingRunnable 클래스 객체입니다.
 
 TaskThead 클레스에 포함된 것 어떻게 아냐구요? 
 
-![Untitled](./assets/997d327a_Untitled.png)
+![](./assets/997d327a_Untitled.png)
 
 딸각 한번이면 즉시 해당 Class의 Stack trace point로 이동할 수 있습니다. 저는 이 기능이 특히 유용한게 클래스 서두엔 보통 해당 클래스의 역할과 기능에 대한 주석이 포함되어 있는 경우가 많은데, 이걸 확인하다가 내가 어디까지 보고 있었는지를 잊어버리는 경우가 많거든요. 
 
 그럴 때 다시 Treads. & Variables 탭에서 확인하고 싶은 라인을 클릭만 하면 손쉽게 이동이 가능합니다. 저는 이럴 때 마치 코드를 탐험하는 로드뷰 같은 기분이 들어요. 
 
-![Untitled](./assets/389d4a1d_Untitled.png)
+![](./assets/389d4a1d_Untitled.png)
 
 조금 더 진행해보면 ThreadPoolExecutor 에서 task를 실행하는 부분까지 볼 수 있네요. 이후엔 소켓을 연결하고 HandShake하는 부분도 나옵니다. 이건 너무 길어서 토글로 넣어둘게요.
 
@@ -337,7 +337,7 @@ Request는 `Spring FilterChain`을 거쳐서 결국 제 컨트롤러로 도달�
 
 ### Project에 포함된 소스 코드만 골라보기
 
-![Untitled](./assets/804f00c0_Untitled.png)
+![](./assets/804f00c0_Untitled.png)
 
 <br/>
 
@@ -349,7 +349,7 @@ Request는 `Spring FilterChain`을 거쳐서 결국 제 컨트롤러로 도달�
 
 ### 그 밖의 일반적인 사용법
 
-![Untitled](./assets/f9bda3ef_Untitled.png)
+![](./assets/f9bda3ef_Untitled.png)
 
 - CodeLine에 Break Point 걸고 해당 시점에 확인 가능한 지역변수, 클래스 변수를 확인할 수 있습니다. 
 
