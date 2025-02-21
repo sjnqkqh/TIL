@@ -8,3 +8,5 @@
 * [나의 오픈소스 기여기 (시작편)](markdowns/나의%20오픈소스%20기여기%20(시작편).md)
 * [Database와 상호작용하기 위한 Repository 계층은 정말 필요한가](markdowns/Database와%20상호작용하기%20위한%20Repository%20계층은%20정말%20필요한가.md)
 * [화두. Index Range Scan의 시간복잡도는 몇인가](markdowns/화두.%20Index%20Range%20Scan의%20시간복잡도는%20몇인가.md)
+* [내가 만난 인생 최악의 코드들 - SQL 지옥](markdowns/내가%20만난%20최악의%20코드들-1.md)
+* [내가 만난 인생 최악의 코드들 - 쓰레기 코드 지옥](markdowns/내가%20만난%20최악의%20코드들%20(2).md)
