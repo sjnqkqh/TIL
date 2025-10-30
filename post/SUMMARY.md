@@ -5,7 +5,7 @@
 * [궁금해 시리즈 2편. Spring WebFlux 성능에 대한 사실과 오해](<markdowns/궁금해 시리즈 2편. Spring WebFlux 성능에 대한 사실과 오해.md>)
 * [Debug와 함께 춤을 - 내가 학습을 위해 디버거를 사용하는 방법](<markdowns/Debug와 함께 춤을 - 내가 학습을 위해 디버거를 사용하는 방법.md>)
 * [Kotlin Jdsl과 춤을 - 사소한 팁](<markdowns/Kotlin Jdsl과 춤을 - 사소한 팁.md>)
-* [나의 오픈소스 기여기 (시작편)](<markdowns/나의 오픈소스 기여기 (시작편).md>)
+* [나의 오픈소스 기여기 \[kotlin-JDSL\]](<markdowns/나의 오픈소스 기여기 (시작편).md>)
 * [Database와 상호작용하기 위한 Repository 계층은 정말 필요한가](<markdowns/Database와 상호작용하기 위한 Repository 계층은 정말 필요한가.md>)
 * [화두. Index Range Scan의 시간복잡도는 몇인가](<markdowns/화두. Index Range Scan의 시간복잡도는 몇인가.md>)
 * [RDB 인덱스는 조회 성능에 얼마나 영향을 끼치는가](rdb.md)
