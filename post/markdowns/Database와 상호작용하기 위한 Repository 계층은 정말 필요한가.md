@@ -2,16 +2,15 @@
 
 **요약: Hibernate 진영에선 Spring Data JPA와 같은 프레임워크가 권장하는 Repository Layer가 필요치 않다고 주장합니다. 근데 전 아닌 것 같아요…!**
 
-\
-
+<br>
 
 꽤 파격적인 이야기라고 생각하는데, 하이버네이트 진영에서도 이미 관행처럼 굳어진 아키텍쳐를 짚고 넘어가긴 부담스러웠는지 상당히 조심스럽게 이야기를 시작했습니다.
 
-![우리가 그간 별 말 안 하긴 했는데](assets/b66288bb_Untitled.png)
+![우리가 그간 별 말 안 하긴 했는데](../.gitbook/assets/b66288bb_Untitled.png)
 
-![관행 중엔 좀 이상한게 있더라.](assets/da658075_Untitled.png)
+![관행 중엔 좀 이상한게 있더라.](../.gitbook/assets/da658075_Untitled.png)
 
-![Repository를 별도로 분리해서 사용하는게 정말 맞아?](assets/49eeb362_Untitled.png)
+![Repository를 별도로 분리해서 사용하는게 정말 맞아?](../.gitbook/assets/49eeb362_Untitled.png)
 
 #### DAO와 리포지토리에 대한 장대한 이야기
 
@@ -37,27 +36,23 @@
 
 요약하자면\* 기존의 DAO 패턴이 JDBC의 지저분한 코드를 담당했고, JPA 표준이 발매되면서 굳이 DAO 계층이 존재할 필요성도 없어졌지만, _여전히 데이터베이스 접근엔 별도의 계층(Repository Layer)이 관행적으로 사용되고 있다. 이게 지금도 존재할 필요가 있나?_ \*라고 볼 수 있습니다.
 
-\
+<br>
 
+![](../.gitbook/assets/d0c6f251_Untitled.png)
 
-![](assets/d0c6f251_Untitled.png)
+![쫄](../.gitbook/assets/b610cbaa_Untitled.png)
 
-![쫄](assets/b610cbaa_Untitled.png)
-
-\
-
+<br>
 
 > _OK, so, look, if it makes you feel better, one way to view EntityManager is to think of it as a single generic "repository" that works for every entity in your system. From this point of view, JPA is your persistence layer. And there’s few good reasons to wrap this abstraction in a second abstraction that’s less generic._
 
 \*기분이 나아질지 모르겠지만, \*`*EntityManager*`_를 보는 한 가지 방법은 시스템의 모든 엔터티에 대해 작동하는 하나의 일반 "리포지토리"로 생각하는 것입니다. 이러한 관점에서 보면 JPA 는 지속성 계층입니다. 그리고 이 추상화를 일반적이지 않은 두 번째 추상화로 포장할 좋은 이유가 거의 없습니다._
 
-\
-
+<br>
 
 즉, 도메인 모델은 이미 설계 단계에서 분리되어 있으며, EntityManager는 이미 모든 엔티티를 포괄할 수 있는 레포지토리의 역할을 수행할 수 있으므로, Repository 계층이 실제적으로 필요치 않을 수 있다는 의견을 제안하며이에 대한 몇 가지 근거를 제시하는데 이는 다음과 같습니다.
 
-\
-
+<br>
 
 * _most nontrivial queries touch multiple entities, and so it’s often quite ambiguous which repository such a query belongs to,_
 * _most queries are extremely specific to a particular fragment of program logic, and aren’t reused in different places across the system, and_
@@ -67,18 +62,15 @@
 * _대부분의 쿼리는 특정 프로그램 로직 조각에 매우 한정되어 있으며 시스템 전체에서 다른 곳에서 재사용되지 않습니다._
 * _리포지토리의 다양한 작업은 상호 작용하거나 공통된 내부 구현 세부 정보를 공유하는 경우가 거의 없습니다._
 
-\
+<br>
 
+![](../.gitbook/assets/898423e1_Untitled.png)
 
-![](assets/898423e1_Untitled.png)
-
-\
-
+<br>
 
 Hibernate의 주장은 대체로 맞습니다. 다만 2번째 근거로 시스템 전체에서 재사용되지 않는다는 주장에는 조금 의구심이 드네요. 자세히 다시 보겠습니다!
 
-\
-
+<br>
 
 ***
 
@@ -89,8 +81,7 @@ Hibernate의 주장은 대체로 맞습니다. 다만 2번째 근거로 시스�
 1. 다른 비즈니스 로직 레이어에서 동일한 Repository 기능을 참조하는 경우
 2. `JpaRepository`에서 제공하던 기본적인 기능(CRUD)과 `Custom Repository implement,` `QueryMethod` 기능을 제거하는 경우
 
-\
-
+<br>
 
 각 경우에 나누어 변경점들을 생각해보겠습니다.
 
@@ -105,15 +96,13 @@ N개의 서비스 클래스에서 동일한 레파지토리를 참조하고 있�
 1. PostController, CreditController 와 같은 Service 클래스 객체를 참조하는 계층에서 UserService 메서드를 호출하고, 리턴값을 다른 서비스 클래스 메서드로 전달하는 방식
 2. PostService, CreditService와 같은 Service 클래스가 UserService를 참조하는 방식
 
-\
-
+<br>
 
 1번째 케이스에선 대부분의 컨트롤러들이 기존에 비해 비대해질 것이라 예상합니다. 서비스 레이어에서 Repository를 호출하던 부분이 Controller가 Service method를 호출하는 방식으로 전환되며 비즈니스 로직이 전개되는 과정이 일부 Controller에게 이양될 가능성이 농후하다고 봅니다. Controller를 되도록 Endpoint 역할만 수행하도록 구성하는 편이라 그다지 마음에 들지 않네요.
 
 2번째 케이스는 더욱 좋지 않다고 생각합니다. 동일한 레이어 상에서 너무 많고, 또 복잡한 의존성을 갖게 되는 형태가 될 것이며, 심심찮게 순환참조 에러도 마주하게 되리라 봅니다. 1번째 케이스는 불호의 영역이었다면 2번째 케이스는 꼭 피해야하는 케이스라고 생각되네요.
 
-\
-
+<br>
 
 ***
 
@@ -134,8 +123,7 @@ Hibernate 제안대로 Repository Layer를 걷어내고 Service Layer에서 위�
 1. **QueryMethod로 정의한 함수들이 서비스 클래스에서 HQL, JPQL, DSL로 재구현**
 2. **Custom Repository Implementateion 메서드 재구현**
 
-\
-
+<br>
 
 ***
 
@@ -153,4 +141,4 @@ Hibernate 제안대로 Repository Layer를 걷어내고 Service Layer에서 위�
 
 혹시 다른 의견이나 Repository Layer를 제거했을 때 얻을 수 있는 이점이 있으시다면 언제든 제안 부탁드리겠습니다! 오늘의 포스팅 여기서 마무리하겠습니다!
 
-![](assets/1724693e_Untitled.png)
+![](../.gitbook/assets/1724693e_Untitled.png)

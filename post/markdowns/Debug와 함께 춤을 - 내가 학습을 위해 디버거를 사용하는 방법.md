@@ -2,7 +2,7 @@
 
 ####
 
-![](assets/45b27456_Untitled.png)
+![](../.gitbook/assets/45b27456_Untitled.png)
 
 #### Intellij-JVM 디버거는 어썸해요…!
 
@@ -14,13 +14,11 @@
 
 여기까지만 해도 크게 틀린 설명은 아니겠지만, 실제로 일어나는 작업 중 거의 **대부분이 생략된 설명이라는 것** 계신가요? 우리는 Intellij Debug를 통해 실제로 Break Point까지 실행된 Thread Stack Trace를 확인할 수 있습니다.
 
-\
+<br>
 
+![](../.gitbook/assets/8a7107dd_Untitled.png)
 
-![](assets/8a7107dd_Untitled.png)
-
-\
-
+<br>
 
 * Controller에 Break Point를 걸어두고 호출한 Stack Trace
 
@@ -180,8 +178,7 @@ run:833, Thread (java.lang)
 
 무려 Thread.run() 에서 부터 BreakPoint 까지 말이죠! 오늘은 이 기능을 가지고 제가 Framework나 Libarary의 동작 방식을 탐색하는 방법을 공유해보고자 합니다.
 
-\
-
+<br>
 
 ***
 
@@ -201,26 +198,25 @@ run:833, Thread (java.lang)
 
 하지만 단순히 엄청나게 많은 양의 정보는 학습에 그다지 도움이 되지 않을 수 있습니다. 저 역시도 Intellij를 수 년간 사용해왔지만 Debuger의 Thread trace 정보를 주의깊게 살피진 않았거든요. 하지만 의도를 가지고 집중해서 살핀다면 이 방대한 정보는 결코 무가치하지 않습니다. 말로만 들었던 것들을 실제로 확인할 수 있거든요. 한번 볼까요?
 
-\
-
+<br>
 
 ***
 
 #### Tread.run()부터 살펴보기
 
-![](assets/37887320_Untitled.png)
+![](../.gitbook/assets/37887320_Untitled.png)
 
 가장 먼저 [Tread.run](http://tread.run/) 메서드가 실행됩니다. target 객체의 클래스까지 확인 가능하네요. TaskThread 클래스에 포함된 private class 인 WrappingRunnable 클래스 객체입니다.
 
 TaskThead 클레스에 포함된 것 어떻게 아냐구요?
 
-![](assets/997d327a_Untitled.png)
+![](../.gitbook/assets/997d327a_Untitled.png)
 
 딸각 한번이면 즉시 해당 Class의 Stack trace point로 이동할 수 있습니다. 저는 이 기능이 특히 유용한게 클래스 서두엔 보통 해당 클래스의 역할과 기능에 대한 주석이 포함되어 있는 경우가 많은데, 이걸 확인하다가 내가 어디까지 보고 있었는지를 잊어버리는 경우가 많거든요.
 
 그럴 때 다시 Treads. & Variables 탭에서 확인하고 싶은 라인을 클릭만 하면 손쉽게 이동이 가능합니다. 저는 이럴 때 마치 코드를 탐험하는 로드뷰 같은 기분이 들어요.
 
-![](assets/389d4a1d_Untitled.png)
+![](../.gitbook/assets/389d4a1d_Untitled.png)
 
 조금 더 진행해보면 ThreadPoolExecutor 에서 task를 실행하는 부분까지 볼 수 있네요. 이후엔 소켓을 연결하고 HandShake하는 부분도 나옵니다. 이건 너무 길어서 토글로 넣어둘게요.
 
@@ -341,21 +337,19 @@ Request는 `Spring FilterChain`을 거쳐서 결국 제 컨트롤러로 도달�
 
 #### Project에 포함된 소스 코드만 골라보기
 
-![](assets/804f00c0_Untitled.png)
+![](../.gitbook/assets/804f00c0_Untitled.png)
 
-\
-
+<br>
 
 사용법은 아주 간단합니다. Thread & Variables 탭의 필터 버튼을 클릭하기만하면 내 프로젝트에서 작성된 Trace만 확인할 수 있습니다. 작업 과정에서 문제가 생긴다면 해당 버튼을 유용하게 사용할 수 있겠죠?
 
-\
-
+<br>
 
 ***
 
 #### 그 밖의 일반적인 사용법
 
-![](assets/f9bda3ef_Untitled.png)
+![](../.gitbook/assets/f9bda3ef_Untitled.png)
 
 * CodeLine에 Break Point 걸고 해당 시점에 확인 가능한 지역변수, 클래스 변수를 확인할 수 있습니다.
 * 또한 다음 BreakPoint까지 로직을 진행하거나, Step Over(해당 라인을 실행하면서 다음 라인으로 이동)/ Step Into (해당 라인의 함수 안으로 이동)/ Step out(해당 함수에서 벗어나며 다음 동작을 실행함)도 가능합니다.
@@ -363,14 +357,12 @@ Request는 `Spring FilterChain`을 거쳐서 결국 제 컨트롤러로 도달�
 
     [https://jojoldu.tistory.com/149](https://jojoldu.tistory.com/149)
 
-\
-
+<br>
 
 ***
 
 오늘은 Intellij Debug를 통해 제가 학습하는 방법을 공유해보았습니다. 사실 이렇다할 팁이라곤 Stack Trace밖에 없는 것 같지만… 그래도 이 부분이 지나치기엔 너무 가치 있는 정보들이라서 공유해봤습니다. 여러분도 시간이 되신다면 지금 개발하고 계신 프로그램을 한번 자세히 살펴보셔도 좋을 것 같아요. 분명 많은 것들을 새롭게 발견하실 수 있을테니까요.
 
-\
-
+<br>
 
 이상 오늘도 긴 포스팅 읽어주셔서 감사합니다. 안녕!
